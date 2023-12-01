@@ -1,0 +1,9 @@
+<!-- Afficher le formulaire de connexion uniquement si l'utilisateur n'est pas authentifié -->
+<form (ngSubmit)="onLogin($event)" *ngIf="!authService.isAuthenticated()">
+    <input type="text" name="username" placeholder="Username" required [(ngModel)]="username">
+    <input type="password" name="password" placeholder="Password" required [(ngModel)]="password">
+    <button type="submit">Login</button>
+</form>
+
+<!-- Afficher le bouton de logout uniquement si l'utilisateur est authentifié -->
+<button *ngIf="authService.isAuthenticated()" (click)="onLogout()" class="logout">Logout</button>
